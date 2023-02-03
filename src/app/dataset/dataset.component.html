@@ -1,0 +1,24 @@
+<nav
+  mat-tab-nav-bar
+  backgroundColor="primary"
+  disableRipple="true"
+  class="mat-elevation-z4 mb-2"
+>
+  <a
+    mat-tab-link
+    [routerLink]="'training'"
+    [routerLinkActive]="['active']"
+    [active]="activeLink.includes('train')"
+  >
+    Data training
+  </a>
+  <a
+    mat-tab-link
+    [routerLink]="'validasi'"
+    [routerLinkActive]="['active']"
+    [active]="activeLink.includes('validasi')"
+  >
+    Data validasi
+  </a>
+</nav>
+<router-outlet></router-outlet>

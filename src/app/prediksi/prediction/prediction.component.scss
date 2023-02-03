@@ -1,0 +1,28 @@
+.spinner-container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-color: #000000a8;
+  z-index: 1;
+}
+
+tr {
+  td:nth-child(1),
+  th:nth-child(1) {
+    width: 7%;
+  }
+  td:nth-child(3),
+  th:nth-child(3),
+  td:nth-child(4),
+  th:nth-child(4),
+  td:nth-child(5),
+  th:nth-child(5) {
+    text-align: center;
+    width: 15%;
+  }
+}

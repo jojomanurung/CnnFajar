@@ -1,0 +1,9 @@
+.active {
+  &:not(:focus) {
+    opacity: 1;
+  }
+}
+
+.active:focus {
+  color: whitesmoke;
+}

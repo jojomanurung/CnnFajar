@@ -1,0 +1,71 @@
+<mat-horizontal-stepper
+  linear
+  [selectedIndex]="selectedIndex"
+  (selectionChange)="selectionChange($event)"
+  disableRipple="true"
+  #stepper
+>
+  <ng-template [matStepperIcon]="'done'">
+    <mat-icon>done</mat-icon>
+  </ng-template>
+  <ng-template [matStepperIcon]="'edit'">
+    <mat-icon>done</mat-icon>
+  </ng-template>
+
+  <mat-step [stepControl]="firstForm" label="Upload gambar">
+    <ng-container *ngIf="selectedIndex === 0">
+      <app-upload-gambar
+        (payload)="saveImage($event)"
+        [editable]="isEditable"
+      ></app-upload-gambar>
+    </ng-container>
+  </mat-step>
+  <mat-step [stepControl]="secondForm" label="Tabel Data">
+    <ng-container *ngIf="selectedIndex === 1">
+      <div
+        class="grid grid-nogutter justify-content-end align-items-center"
+        *ngIf="isEditable"
+      >
+        <div class="col">
+          <h4 class="font-medium m-0">
+            Setelah lanjut tidak dapat menambah gambar lagi
+          </h4>
+        </div>
+        <div class="col-fixed">
+          <button mat-flat-button color="warn" class="mr-2" matStepperPrevious>
+            Kembali
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="mr-2"
+            (click)="proceed()"
+          >
+            Selanjutnya
+          </button>
+        </div>
+      </div>
+      <app-table-data
+        [(data)]="imageDataList"
+        [editable]="isEditable"
+      ></app-table-data>
+    </ng-container>
+  </mat-step>
+  <mat-step [stepControl]="thirdForm" label="Prediksi">
+    <ng-container *ngIf="selectedIndex === 2">
+      <app-prediction
+        [data]="imageDataList"
+        [hasil]="this.thirdForm.getRawValue()"
+        (save)="predictionResult($event)"
+      ></app-prediction>
+    </ng-container>
+  </mat-step>
+  <mat-step [stepControl]="fourthForm" label="Hasil">
+    <ng-container *ngIf="selectedIndex === 3">
+      <app-hasil
+        [hasil]="getResultArray().value"
+        (reset)="reset($event)"
+      ></app-hasil>
+    </ng-container>
+  </mat-step>
+</mat-horizontal-stepper>

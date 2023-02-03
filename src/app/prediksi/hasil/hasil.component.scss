@@ -1,0 +1,64 @@
+.binary-table {
+  margin: 1rem 2rem 0 2rem;
+  table {
+    width: 100%;
+  }
+}
+
+.mat-column-tp {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-fn {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-fp {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-tn {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-precision {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-recall {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-specificity {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-f1 {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.mat-column-accuracy {
+  padding: 0 10px;
+  text-align: center;
+  width: 10%;
+}
+
+.button-reset {
+  margin: 1rem 0 0 0;
+}

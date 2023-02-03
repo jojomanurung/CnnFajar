@@ -1,0 +1,127 @@
+<div
+  class="grid grid-nogutter"
+  [formGroup]="form"
+  *ngIf="editable; else noteditable"
+>
+  <div class="col-12">
+    <div class="grid grid-nogutter">
+      <div class="col-fixed pr-3">
+        <input
+          #fileUpload
+          type="file"
+          style="display: none"
+          [accept]="['.png', '.jpeg', '.jpg']"
+          (change)="fileChange($event)"
+        />
+        <mat-form-field>
+          <input
+            readonly
+            matInput
+            formControlName="file_name"
+            placeholder="Pilih gambar"
+            style="cursor: pointer"
+            (click)="upload($event)"
+          />
+          <button
+            *ngIf="!form.get('file_name').value"
+            matSuffix
+            mat-icon-button
+            disableRipple="true"
+            (click)="fileUpload.click()"
+          >
+            <mat-icon>upload</mat-icon>
+          </button>
+          <button
+            *ngIf="form.get('file_name').value"
+            matSuffix
+            mat-icon-button
+            disableRipple="true"
+            (click)="reset()"
+          >
+            <mat-icon>backspace</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="
+              form.get('file_name').touched && form.get('file_name').invalid
+            "
+            >Kamu belum upload gambar!</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-fixed pr-3">
+        <mat-form-field>
+          <mat-label>Pilih jenis gambar</mat-label>
+          <mat-select formControlName="class">
+            <mat-option *ngFor="let item of classes" [value]="item">{{
+              item
+            }}</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="
+              form.get('class').touched && form.get('class').invalid
+            "
+            >Kamu belum pilih jenis gambar!</mat-error
+          >
+        </mat-form-field>
+        <mat-icon [matTooltip]="tooltip" class="info">info</mat-icon>
+      </div> -->
+      <div class="col">
+        <button mat-flat-button color="primary" (click)="processImg()">
+          Proses
+        </button>
+      </div>
+      <div class="col-fixed">
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="!isSubmit"
+          (click)="saveImg()"
+        >
+          Simpan
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="grid grid-nogutter" *ngIf="isSubmit">
+      <div class="col-6">
+        <img
+          #image
+          class="img-placeholder"
+          [src]="form.get('file_src').value"
+        />
+        <div *ngIf="form.get('file_src').value">
+          <p>Ukuran Gambar: {{ naturalWidth }} x {{ naturalHeight }}</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <mat-card>
+          <div class="grid grid-nogutter">
+            <div class="col-6">
+              <h3 class="font-medium m-0 pb-1">Resize</h3>
+              <canvas #canvas1></canvas>
+              <div>
+                <p>Ukuran Gambar: {{ canvas1.width }} x {{ canvas1.height }}</p>
+              </div>
+            </div>
+            <!-- <div class="col-6">
+              <h3 class="font-medium m-0 pb-1">Median Filtering</h3>
+              <canvas #canvas2></canvas>
+              <div>
+                <p>Ukuran Gambar: {{ canvas1.width }} x {{ canvas1.height }}</p>
+              </div>
+            </div> -->
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noteditable>
+  <div class="grid grid-nogutter justify-content-center">
+    <div class="py-5">
+      <h1 class="text-center font-medium">Tidak dapat menambah gambar lagi</h1>
+    </div>
+  </div>
+</ng-template>

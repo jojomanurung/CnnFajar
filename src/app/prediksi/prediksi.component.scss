@@ -1,0 +1,10 @@
+.mat-stepper-horizontal {
+  background-color: #fafafa;
+}
+::ng-deep.mat-step-header {
+  border-radius: 10px;
+  .mat-step-icon {
+    height: 30px;
+    width: 30px;
+  }
+}

@@ -1,0 +1,27 @@
+.menu-item.active {
+  color: #3f51b5 !important;
+}
+
+.menu-item {
+  display: flex;
+  color: black;
+  align-items: center;
+  text-decoration: none;
+  height: 60px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  padding: 0 21px 0 25px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(black, 0.15) !important;
+  }
+
+  .route-icon {
+    margin-right: 16px;
+    font-size: 20px;
+    height: 20px;
+    line-height: 20px;
+    width: 20px;
+  }
+}

@@ -1,0 +1,14 @@
+<a
+  *ngIf="item?.route"
+  [ngStyle]="{ 'padding-left': depth * 22 + 21 + 'px' }"
+  [ngClass]="[
+    isNavCollapsed ? 'is-collapsed' : '',
+    depth ? 'sub-' + depth : ''
+  ]"
+  [routerLink]="item?.route"
+  [routerLinkActive]="['active']"
+  class="menu-item"
+>
+  <mat-icon class="route-icon">{{ item?.icon }}</mat-icon>
+  <span class="col py-0 pl-2 pr-4 route-title">{{ item?.title }}</span>
+</a>

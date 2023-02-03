@@ -1,0 +1,48 @@
+.word-wrp {
+  white-space: normal;
+}
+
+mat-toolbar,
+mat-toolbar h1,
+mat-toolbar h2,
+mat-toolbar h3,
+mat-toolbar h4,
+mat-toolbar h5,
+mat-toolbar h6 {
+  font-weight: 400 !important;
+}
+
+.mat-drawer.mat-sidenav {
+  min-width: 222px;
+  width: 222px;
+}
+
+.shell-content {
+  min-height: calc(100vh - 64px);
+  height: 100%;
+  padding: 30px 30px 30px 30px;
+  overflow: auto;
+}
+
+.fixed-container {
+  position: absolute;
+  top: 64px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+.fixed-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background: rgba(250, 250, 250, 0.9);
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}

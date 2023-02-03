@@ -1,0 +1,9 @@
+tr.mat-header-row:nth-child(1) {
+  height: 70px;
+}
+tr.mat-header-row:nth-child(2) {
+  td:nth-child(1),
+  th:nth-child(1) {
+    width: 7%;
+  }
+}

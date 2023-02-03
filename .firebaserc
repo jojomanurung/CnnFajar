@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cnn-fajar": {
+      "hosting": {
+        "CnnFajar": [
+          "cnn-fajar"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cnn-fajar"
+  }
+}
