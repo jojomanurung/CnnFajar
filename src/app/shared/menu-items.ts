@@ -10,11 +10,11 @@ export const Menus: MenuItems[] = [
     route: 'dashboard',
     icon: 'dashboard',
   },
-  {
-    title: 'Dataset',
-    route: 'dataset',
-    icon: 'collections',
-  },
+  // {
+  //   title: 'Dataset',
+  //   route: 'dataset',
+  //   icon: 'collections',
+  // },
   {
     title: 'Prediksi',
     route: 'prediksi',
