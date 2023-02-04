@@ -35,7 +35,7 @@ export class HasilComponent implements OnInit, AfterViewInit {
 
   labels: any[] = [];
   pred: any[] = [];
-  className: string[] = ['Benign', 'Malignant', 'Normal'];
+  className: string[] = ['Benign', 'Malignant'];
   tensorLabel: tf.Tensor1D;
   tensorPred: tf.Tensor1D;
   numClasses: number;
@@ -78,8 +78,6 @@ export class HasilComponent implements OnInit, AfterViewInit {
           this.labels.push(0);
         } else if (item.file_name.includes('malignant')) {
           this.labels.push(1);
-        } else if (item.file_name.includes('normal')) {
-          this.labels.push(2);
         }
         // Get prediction result
         this.pred.push(item.prediction);
@@ -172,13 +170,13 @@ export class HasilComponent implements OnInit, AfterViewInit {
               const index = context.dataIndex;
               const value = context.dataset.data[index] as any;
               const alpha = value.z / this.labels.length + 0.2;
-              return `rgba(0, 255, 0, ${alpha})`;
+              return `rgba(0, 60, 255, ${alpha})`;
             },
             borderColor: (context) => {
               const index = context.dataIndex;
               const value = context.dataset.data[index] as any;
               const alpha = value.z / this.labels.length + 0.2;
-              return `rgba(0, 255, 0, ${alpha})`;
+              return `rgba(0, 60, 255, ${alpha})`;
             },
             borderWidth: 1,
             hoverBorderColor: 'yellowgreen',

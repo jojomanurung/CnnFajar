@@ -47,9 +47,9 @@ export class PredictionComponent implements OnInit, OnDestroy, AfterViewInit {
   loading: boolean = false;
   loadingModel: boolean = true;
   model: tf.LayersModel;
-  className = ['Benign', 'Malignant', 'Normal'];
+  className = ['Benign', 'Malignant'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'name', 'benign', 'malignant', 'normal'];
+  displayedColumns: string[] = ['id', 'name', 'benign', 'malignant'];
   private subs = new SubSink();
   page: number = 0;
   isDonePredict = false;
@@ -90,7 +90,7 @@ export class PredictionComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(modelUrl);
     this.model = await tf.loadLayersModel(modelUrl);
     // Warm up the model
-    const result = this.model.predict(tf.zeros([1, 224, 224, 1])) as tf.Tensor;
+    const result = this.model.predict(tf.zeros([1, 224, 224, 3])) as tf.Tensor;
     result.dataSync();
     result.dispose();
     this.loadingModel = false;
@@ -122,10 +122,8 @@ export class PredictionComponent implements OnInit, OnDestroy, AfterViewInit {
       img = tf.browser
         .fromPixels(img)
         .resizeNearestNeighbor([224, 224])
-        .mean(2)
         .toFloat()
-        .expandDims(0)
-        .expandDims(-1);
+        .expandDims(0);
       return img as tf.Tensor;
     });
 
@@ -156,7 +154,6 @@ export class PredictionComponent implements OnInit, OnDestroy, AfterViewInit {
     payload.malignant = classes.find(
       (val) => val.class === 'Malignant'
     ).probability;
-    // payload.normal = classes.find((val) => val.class === 'Normal').probability;
 
     return payload;
   }
