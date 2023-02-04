@@ -26,3 +26,7 @@ tr {
     width: 15%;
   }
 }
+
+::ng-deep.mat-flat-button.mat-primary {
+  background-color: #23a0b4;
+}
